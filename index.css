@@ -1,0 +1,38 @@
+
+
+/* all classes beginning with col before hyphen (regex-like)*/
+[class*=col]{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    padding: 50px;
+    border: 5px;
+    border-color: red;
+
+}
+
+.weather-icon{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    left: -50px;
+    top: -50px;
+}
+
+.label{
+    position: relative;
+    font-size: 16px;
+    top: -50px;
+    left: -14px;
+    width: 100px;
+    height: 25px;
+}
+
+[class*=temp]{
+    position: relative;
+    font-size: 12px;
+    top: -50px;
+    left: -12px;
+    width: 200px;
+    height: 25px;
+}
