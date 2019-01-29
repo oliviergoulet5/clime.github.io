@@ -9,3 +9,5 @@ $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=Toronto,us&mode=js
 console.log(weatherData);
 
 // find out today's day - label the headers correctly
+
+//remove https if doesn't work
