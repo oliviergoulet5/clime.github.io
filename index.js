@@ -1,3 +1,4 @@
+//Geolocation
 function getLocation(){
   if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -15,7 +16,3 @@ $.getJSON("api.openweathermap.org/data/2.5/forecast?q=Toronto,us&mode=json&APPID
     //data is the JSON string
     weatherData = $.parseJSON(data);
 });
-
-// find out today's day - label the headers correctly
-
-//remove https if doesn't work
