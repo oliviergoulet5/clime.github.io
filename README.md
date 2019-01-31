@@ -9,5 +9,6 @@ Weather application to practice using JS, JQuery, React and JSON.
 
 - Switch between celsius and fahrenheit
 
-- Offer a nice user interface and user experience
+- Offer a nice user interface and user experience 
+  (thinking about a card interface much like the early builds of Google Fuschia)
   
