@@ -36,3 +36,7 @@
     width: 200px;
     height: 25px;
 }
+
+#cards-weather .card-text{
+    text-align: center;
+}
