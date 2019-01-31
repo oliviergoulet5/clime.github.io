@@ -1,7 +1,7 @@
-# clime.github.io
+# clime.io
 Weather application to practice using JS, JQuery, React and JSON.
 
-# what will this project do?
+# What will this project do?
 
 Get user's city
 Present 5 day forecast for the user
