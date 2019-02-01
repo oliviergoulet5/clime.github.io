@@ -47,6 +47,34 @@ function setupCards(index, card){
 }
 
 function changeSelection(selection){
-  var selectedDay = selection.getAttribute('day-id');
-  console.log(selectedDay);
+  var card = $(selection).parent();
+  if ($(selection).attr('class').includes("text") || $(selection).attr('class').includes("title")){
+    card = $(selection).parent().parent();
+  }
+
+  $(card).css({
+    background: "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
+
+  })
 }
+
+/*
+//flaw: i'm ignoring clicks on title/paragraph. I should redirect this
+function changeSelection(selection){
+  if (!($(selection).is("h5") || $(selection).is("p"))){
+    var selectedDay = selection.getAttribute('day-id');
+
+    var defaultColor = "#fff";
+    var childrenElements = $(selection).parent().parent().children();
+    for (var i=0; i< childrenElements.length; i++){
+        $(childrenElements[i]).css({
+          background: "#fff"
+        })
+    }
+    $(selection).parent().css({
+      background: "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
+    });
+    console.log(selectedDay);
+  }
+}
+*/
