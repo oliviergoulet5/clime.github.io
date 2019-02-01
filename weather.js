@@ -31,60 +31,53 @@ function setupCards(index, card){
     $(card).find(".card-title")[0].innerHTML = days[(today.dayIndex + index) % 7];
     $(card).find(".card-text")[0].innerHTML = weatherData.list[index].main.temp + "&#176" + "C";
 
+    // set day-id
     for (var i=0; i<$(card).children().length; i++){
-      console.log($(card).children()[i].setAttribute('day-id', days[(today.dayIndex + index) % 7]));
+      $(card).attr('day-id', days[(today.dayIndex + index) % 7]);
     }
 
-    if(index == 0){
-        $(card).css({
-          'background-image': "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
-        });
-        $(card).css("width", "13rem");
-    }else{
-        $(card).css("width", "12rem");
+    if (index == 0){
+    changeSelection($(card).children()[0]);
     }
-
 }
 
 function changeSelection(selection){
   var card = $(selection).parent();
+  var selectedDay = card.attr('day-id');
+
   if ($(selection).attr('class').includes("text") || $(selection).attr('class').includes("title")){
     card = $(selection).parent().parent();
   }
-//UNDEFINED BACKGROUND-IMAGE?
+
   var allCards = card.parent().children();
   for (var i=0; i < allCards.length; i++){
-    console.log(allCards[i]);
-    console.log($(allCards[i]).css("background-image"));
-
     if ($(allCards[i]).css("background-image")){
-      $(allCards[i]).css("background-image") == null;
+      $(allCards[i]).css("background-image") == "";
       $(allCards[i]).css("background", "#fff");
+      //add a hover in here?
     }
   }
 
   $(card).css({
     'background-image': "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
   })
+
+  fillData(selectedDay, allCards);
 }
 
-/*
-//flaw: i'm ignoring clicks on title/paragraph. I should redirect this
-function changeSelection(selection){
-  if (!($(selection).is("h5") || $(selection).is("p"))){
-    var selectedDay = selection.getAttribute('day-id');
-
-    var defaultColor = "#fff";
-    var childrenElements = $(selection).parent().parent().children();
-    for (var i=0; i< childrenElements.length; i++){
-        $(childrenElements[i]).css({
-          background: "#fff"
-        })
+function fillData(selectedDay, allCards){
+  console.log(selectedDay);
+  var selectedDayIndex = i;
+  for (var i = 0; i < allCards.length; i++){
+    if ($(allCards[i]).attr('day-id') == selectedDay){
+      //sometimes undefined on text labels?
+      selectedDayIndex = i;
+      break;
     }
-    $(selection).parent().css({
-      background: "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
-    });
-    console.log(selectedDay);
   }
+  var low = weatherData.list[selectedDayIndex].main.temp_min + "&#176" + "C";
+  $('#information-low').html("Low: " + low);
+
+  var high = weatherData.list[selectedDayIndex].main.temp_max + "&#176" + "C";
+  $('#information-high').html("High: " + high);
 }
-*/
