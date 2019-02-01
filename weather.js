@@ -37,7 +37,7 @@ function setupCards(index, card){
 
     if(index == 0){
         $(card).css({
-          background: "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
+          'background-image': "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
         });
         $(card).css("width", "13rem");
     }else{
@@ -51,10 +51,20 @@ function changeSelection(selection){
   if ($(selection).attr('class').includes("text") || $(selection).attr('class').includes("title")){
     card = $(selection).parent().parent();
   }
+//UNDEFINED BACKGROUND-IMAGE?
+  var allCards = card.parent().children();
+  for (var i=0; i < allCards.length; i++){
+    console.log(allCards[i]);
+    console.log($(allCards[i]).css("background-image"));
+
+    if ($(allCards[i]).css("background-image")){
+      $(allCards[i]).css("background-image") == null;
+      $(allCards[i]).css("background", "#fff");
+    }
+  }
 
   $(card).css({
-    background: "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
-
+    'background-image': "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
   })
 }
 
