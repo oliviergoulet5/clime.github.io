@@ -80,4 +80,13 @@ function fillData(selectedDay, allCards){
 
   var high = weatherData.list[selectedDayIndex].main.temp_max + "&#176" + "C";
   $('#information-high').html("High: " + high);
+
+  var humidity = weatherData.list[selectedDayIndex].main.humidity + "%";
+  $('#information-humidity').html("Humidity: " + humidity); // divide by 2? why is the value wrong
+
+  var windSpeed = weatherData.list[selectedDayIndex].wind.speed + " km/h";
+  $('#information-windspeed').html("Wind Speed: " + windSpeed);
+
+  var windDirection = weatherData.list[selectedDayIndex].wind.deg + "&#176";
+  $('#information-wind-direction').html("Wind Direction: " + windDirection)
 }
