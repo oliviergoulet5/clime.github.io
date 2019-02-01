@@ -1,30 +1,28 @@
+//Refer to: https://ponyfoo.com/articles/es6-promises-in-depth
 // API
 var weatherKey = "11b0138050052c987cb38016eabddacb";
 var weatherData;
 getLocation()
   .then((position) => {
-    weatherData = getAPIData(position);
+    $.getJSON("https://api.openweathermap.org/data/2.5/forecast?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude +"&mode=json&units=metric&cnt=5&APPID=" + weatherKey, function(data) {
+      weatherData = data;
+    })
+      .then(function(json) {
+        var cards = $("#cards-weather").children(".card");
+        weatherData = json;
+        cards.each(setupCards);
+      });
 
-    var cards = $("#cards-weather").children(".card");
-    cards.each(setupCards);
-    console.log(weatherData);
+
 
   })
   .catch((err) => {
     console.error(err.message);
   });
 
-function getAPIData(position){
 
-  var weatherData = $.getJSON("https://api.openweathermap.org/data/2.5/forecast?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude +"&mode=json&APPID=" + weatherKey, function(data) {
-    console.log("Success " + data);
-  })
-    .done(function() {
-      console.log("Second? WTF IS THIS");
-    });
 
-  return weatherData;
-}
+
 
 // Get Date
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -39,9 +37,10 @@ function setupCards(index, card){
     console.log($(card).find(".card-title").innerHTML);
     $(card).find(".card-title")[0].innerHTML = days[(today.dayIndex + index) % 7];
     if (weatherData){
-      $(card).find(".card-text")[0].innerHTML = weatherData.responseJSON;
+      console.log((today.dayIndex+index)%7);
+      $(card).find(".card-text")[0].innerHTML = weatherData.list[index].main.temp + "°C";
     }else{
-      $(card).find(".card-text")[0].innerHTML = "Sample text";
+      $(card).find(".card-text")[0].innerHTML = "--";
     }
 
     if(index == 0){
