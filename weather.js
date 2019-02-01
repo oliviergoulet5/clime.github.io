@@ -38,7 +38,7 @@ function setupCards(index, card){
     $(card).find(".card-title")[0].innerHTML = days[(today.dayIndex + index) % 7];
     if (weatherData){
       console.log((today.dayIndex+index)%7);
-      $(card).find(".card-text")[0].innerHTML = weatherData.list[index].main.temp + "°C";
+      $(card).find(".card-text")[0].innerHTML = weatherData.list[index].main.temp + "&#176" + "C";
     }else{
       $(card).find(".card-text")[0].innerHTML = "--";
     }
