@@ -2,7 +2,7 @@
 var weatherKey = "11b0138050052c987cb38016eabddacb";
 var weatherData;
 
-$.getJSON("api.openweathermap.org/data/2.5/forecast?q=Toronto,us&mode=json&APPID=" + weatherKey, function(data) {
+$.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=Toronto,us&mode=json&APPID=" + weatherKey, function(data) {
     //data is the JSON string
     weatherData = $.parseJSON(data);
 });
@@ -27,7 +27,10 @@ function setupCards(index, card){
     $(card).find(".card-text")[0].innerHTML = "Sample text";
 
     if(index == 0){
-        $(card).css("background-color", "#89C4F4");
+      //  $(card).css("background-color", "#89C4F4");
+        $(card).css({
+          background: "-webkit-gradient(linear, left top, left bottom, from(#74b9ff), to(#81ecec))"
+        });
         $(card).css("width", "13rem");
     }else{
         $(card).css("width", "12rem");

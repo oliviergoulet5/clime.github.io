@@ -14,6 +14,12 @@
     margin-top: 25px;
 }
 
+#cards-weather .card:hover{
+  width: 13rem;
+  /*background-image: linear-gradient(#74b9ff, #81ecec);*/
+  background-image: linear-gradient(#dfe6e9, #fff);
+}
+
 #separator {
     border-width: 1.5px;
 }
