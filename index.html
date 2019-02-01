@@ -1,5 +1,4 @@
 <html>
-<!--https://oliviergoulet5.github.io/clime.github.io/-->
     <head>
         <title>Clime Weather App</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -9,20 +8,16 @@
     </head>
 
     <body id="weather-app">
-        <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
-        <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script src="location.js"></script>
         <script src="weather.js"></script>
 
-        <!-- Visible Elements Below -->
         <h class="header-title">5 Day Forecast</h>
-        <!-- Horizontal Grid of 1 row, 7 columns, each day of week-->
 
                 <div class="container-fluid">
                     <div id="cards-weather" class="row">
-                        <div class="card" style="width: 12rem;">
+                        <div class="card" style="width: 12rem;" onclick="fillData()">
                             <img class="card-img-top" src="res/cloudy.png" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">...</h5>
@@ -57,15 +52,21 @@
                                 <p class="card-text"></p>
                             </div>
                         </div>
-
-
                     </div>
                     <hr id="separator">
                     <div class="information">
                         <h id="information-title">Weather Data</h>
+                        <div class="container-fluid">
+                          <div class="row-info">
+                            <!-- right side -->
+                            <h id="information-high">High: ...</h>
+                            <div class="col-info">
+                              <!-- left side -->
+                              <h id="information-low">Low: ...</h>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                 </div>
-
-
     </body>
 </html>

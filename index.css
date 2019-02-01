@@ -29,3 +29,14 @@
 #information-title {
     font-size: 25px;
 }
+
+.col-info{
+  float: left;
+  width: 50%;
+}
+
+.row-info:after{
+  content: "";
+  display: table;
+  clear: both;
+}
