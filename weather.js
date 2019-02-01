@@ -13,7 +13,7 @@ getLocation()
 function getAPIData(position){
   var weatherData;
   console.log(position);
-  $.getJSON("api.openweathermap.org/data/2.5/forecast?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude +"&mode=json&APPID=" + weatherKey, function(data) {
+  $.getJSON("https://api.openweathermap.org/data/2.5/forecast?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude +"&mode=json&APPID=" + weatherKey, function(data) {
       weatherData = data;
       console.log("Weather data: " + weatherData);
   });
