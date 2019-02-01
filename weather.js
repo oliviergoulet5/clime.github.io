@@ -1,11 +1,31 @@
 // API
 var weatherKey = "11b0138050052c987cb38016eabddacb";
 var weatherData;
+getLocation()
+  .then((position) => {
+    //console.log(position);
+    weatherData = getAPIData(position);
+  })
+  .catch((err) => {
+    console.error(err.message);
+  });
 
+function getAPIData(position){
+  var weatherData;
+  console.log(position);
+  $.getJSON("api.openweathermap.org/data/2.5/forecast?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude +"&mode=json&APPID=" + weatherKey, function(data) {
+      weatherData = data;
+      console.log("Weather data: " + weatherData);
+  });
+
+  return weatherData;
+}
+
+/*
 $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=Toronto,us&mode=json&APPID=" + weatherKey, function(data) {
-    //data is the JSON string
-    weatherData = $.parseJSON(data);
+    weatherData = data;
 });
+*/
 
 // Get Date
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -21,6 +41,7 @@ $(document).ready(function(){
     cards.each(setupCards);
 });
 
+// Cards
 function setupCards(index, card){
     console.log($(card).find(".card-title").innerHTML);
     $(card).find(".card-title")[0].innerHTML = days[(today.dayIndex + index) % 7];

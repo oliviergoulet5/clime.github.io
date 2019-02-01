@@ -18,6 +18,8 @@
   width: 13rem;
   /*background-image: linear-gradient(#74b9ff, #81ecec);*/
   background-image: linear-gradient(#dfe6e9, #fff);
+  cursor:pointer;
+
 }
 
 #separator {
