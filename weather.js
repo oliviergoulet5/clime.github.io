@@ -3,29 +3,28 @@ var weatherKey = "11b0138050052c987cb38016eabddacb";
 var weatherData;
 getLocation()
   .then((position) => {
-    //console.log(position);
     weatherData = getAPIData(position);
+
+    var cards = $("#cards-weather").children(".card");
+    cards.each(setupCards);
+    console.log(weatherData);
+
   })
   .catch((err) => {
     console.error(err.message);
   });
 
 function getAPIData(position){
-  var weatherData;
-  console.log(position);
-  $.getJSON("https://api.openweathermap.org/data/2.5/forecast?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude +"&mode=json&APPID=" + weatherKey, function(data) {
-      weatherData = data;
-      console.log("Weather data: " + weatherData);
-  });
+
+  var weatherData = $.getJSON("https://api.openweathermap.org/data/2.5/forecast?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude +"&mode=json&APPID=" + weatherKey, function(data) {
+    console.log("Success " + data);
+  })
+    .done(function() {
+      console.log("Second? WTF IS THIS");
+    });
 
   return weatherData;
 }
-
-/*
-$.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=Toronto,us&mode=json&APPID=" + weatherKey, function(data) {
-    weatherData = data;
-});
-*/
 
 // Get Date
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -35,17 +34,15 @@ var today = {
     dayName: days[new Date().getDay()]
 };
 
-$(document).ready(function(){
-    var cards = $("#cards-weather").children(".card");
-
-    cards.each(setupCards);
-});
-
 // Cards
 function setupCards(index, card){
     console.log($(card).find(".card-title").innerHTML);
     $(card).find(".card-title")[0].innerHTML = days[(today.dayIndex + index) % 7];
-    $(card).find(".card-text")[0].innerHTML = "Sample text";
+    if (weatherData){
+      $(card).find(".card-text")[0].innerHTML = weatherData.responseJSON;
+    }else{
+      $(card).find(".card-text")[0].innerHTML = "Sample text";
+    }
 
     if(index == 0){
       //  $(card).css("background-color", "#89C4F4");
@@ -59,4 +56,10 @@ function setupCards(index, card){
 
 }
 
-console.log(weatherData);
+/*
+$(document).ready(function(){
+    var cards = $("#cards-weather").children(".card");
+
+    cards.each(setupCards);
+});
+*/
