@@ -12,3 +12,4 @@ Weather application to practice using JS, JQuery, React and JSON.
 - Offer a nice user interface and user experience 
   (thinking about a card interface much like the early builds of Google Fuschia)
   
+![](sample.PNG)
