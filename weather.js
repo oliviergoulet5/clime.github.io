@@ -34,6 +34,13 @@ function setupCards(index, card){
     // set day-id
     for (var i=0; i<$(card).children().length; i++){
       $(card).attr('day-id', days[(today.dayIndex + index) % 7]);
+      //change picture of cards here
+      console.log($(card).find("img"));
+      $(card).find("img").attr('src', 'res/' + weatherData.list[index].weather[0].main.toLowerCase() + ".png");
+     // $(card).children().find("img").attr('src/' + weatherData.list[index].weather[0].main);
+
+     // if (weatherData.list[index].weather[0].main)
+
     }
 
     if (index == 0){
