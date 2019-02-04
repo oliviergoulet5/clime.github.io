@@ -53,7 +53,10 @@ function changeSelection(selection){
   for (var i=0; i < allCards.length; i++){
     if ($(allCards[i]).css("background-image")){
       $(allCards[i]).css("background-image") == "";
-      $(allCards[i]).css("background", "#fff");
+    //  $(allCards[i]).css("background", "#fff");
+      $(allCards[i]).css("background-color", "#fff");
+      // why does background override?
+      //can i make my own mode ex. hover, after, before
       //add a hover in here?
     }
   }
