@@ -1,5 +1,5 @@
 # clime.io
-Weather application to practice using JS, JQuery, React and JSON.
+Weather application to practice using JS, JQuery, and JSON.
 
 # What will this project do?
 
